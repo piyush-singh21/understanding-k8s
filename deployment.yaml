@@ -20,10 +20,5 @@ spec:
               name: story-volume
       volumes:
         - name: story-volume
-          hostPath:
-            # Will share data with mountPath: /app/story
-            # All pods will share same path
-            # However this won't be shared among different nodes
-            path: /data
-            # Create if it doesn't exist
-            type: DirectoryOrCreate
+          PersistentVolumeClaim:
+            claimName: host-pvc
