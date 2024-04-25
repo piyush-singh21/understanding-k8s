@@ -19,7 +19,11 @@ spec:
             - mountPath: /app/story
               name: story-volume
       volumes:
-        # Will survive container removal,
-        # but not pod removal
         - name: story-volume
-          emptyDir: {}
+          hostPath:
+            # Will share data with mountPath: /app/story
+            # All pods will share same path
+            # However this won't be shared among different nodes
+            path: /data
+            # Create if it doesn't exist
+            type: DirectoryOrCreate
