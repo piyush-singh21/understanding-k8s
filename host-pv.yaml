@@ -6,8 +6,9 @@ spec:
   capacity:
     storage: 1Gi
   volumeMode: Filesystem
-  accessMode:
+  storageClassName: standard
+  accessModes:
     - ReadWriteOnce
   hostPath:
-    host: /data
+    path: /data
     type: DirectoryOrCreate

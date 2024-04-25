@@ -20,5 +20,5 @@ spec:
               name: story-volume
       volumes:
         - name: story-volume
-          PersistentVolumeClaim:
+          persistentVolumeClaim:
             claimName: host-pvc
