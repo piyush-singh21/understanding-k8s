@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: story-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: story
+  template:
+    metadata:
+      labels:
+        app: story
+    spec:
+      containers:
+        - name: story
+          image: piyush210/kub-data-demo:3
+          volumeMounts:
+            - mountPath: /app/story
+              name: story-volume
+      volumes:
+        # Will survive container removal,
+        # but not pod removal
+        - name: story-volume
+          emptyDir: {}
